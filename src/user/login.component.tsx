@@ -1,8 +1,29 @@
 import './login.component.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { UserState } from '../store/reducer';
+import { loginAction, getUser } from '../store/actions';
+import { User } from './user';
+import userService from './user.service';
 
 function LoginComponent() {
-  function handleFormInput() {}
-  function submitForm() {}
+  const user = useSelector((state: UserState) => state.loginUser);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function handleFormInput({ target }: any) {
+    console.log(target);
+    let u: User = { ...user, [target.name]: target.value };
+
+    dispatch(loginAction(u));
+  }
+  function submitForm() {
+    userService.login(user).then((user) => {
+      console.log(user);
+      dispatch(getUser(user));
+      navigate('/trms');
+    });
+  }
 
   return (
     <div className="row trms-container">
@@ -38,6 +59,7 @@ function LoginComponent() {
               className="form-control"
               id="name"
               name="name"
+              value={user.name}
               onChange={handleFormInput}
             />
           </div>
@@ -50,6 +72,7 @@ function LoginComponent() {
               className="form-control"
               id="password"
               name="password"
+              value={user.password}
               onChange={handleFormInput}
             />
           </div>

@@ -8,13 +8,15 @@ class UserService {
   }
 
   async getLogin(): Promise<User> {
-    return await axios.get(this.URI).then((result) => {
-      return result.data;
-    });
+    return await axios
+      .get(this.URI, { withCredentials: true })
+      .then((result) => {
+        return result.data;
+      });
   }
 
   async login(u: User) {
-    const result = await axios.post(this.URI, u);
+    const result = await axios.post(this.URI, u, { withCredentials: true });
     return result.data;
   }
 

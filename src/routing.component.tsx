@@ -5,6 +5,7 @@ function RouterComponent() {
   return (
     <Routes>
       <Route path="/" element={<LoginComponent />} />
+      <Route path="/trms" element={<div> trms</div>} />
     </Routes>
   );
 }
