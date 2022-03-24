@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Sriracha&display=swap');
+
+.trms-container .nav-link {
+  color: white;
+  display: flex;
+}
+
+.trms-body {
+  color: #e7ecf0;
+  /* height: 150vh; */
+  padding: 50px;
+}
+
+.trms-img {
+  width: 100%;
+  height: 100%;
+}
+
+.trms-form {
+  color: white;
+  padding: 50px;
+}
+
+.trms-form-heading {
+  text-align: left;
+}
